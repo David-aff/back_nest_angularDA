@@ -7,6 +7,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './service/auth.service';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
+import { CheckboxModule } from 'primeng/checkbox';
+import { ButtonModule } from 'primeng/button';
 
 
 
@@ -22,7 +26,12 @@ import { AuthService } from './service/auth.service';
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    PasswordModule,
+    CheckboxModule,
+    ButtonModule,
+    InputTextModule,
+
   ]
 })
 export class AuthModule { }
