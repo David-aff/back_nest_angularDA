@@ -1,27 +1,23 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { RegisterAuthDto } from './dto/login-auth.dto';
-import { LoginAuthDto } from './dto/register-auth.dto';
-import { AuthService } from './auth.service';
-import { JwtAuthGuard } from './jwt-auth.guard';
 
+import { Body, Controller, Post } from '@nestjs/common';
+import { RegisterAuthDto } from './dto/register-auth.dto';
+import { LoginAuthDto } from './dto/login-auth.dto';
+import { AuthService } from './auth.service';
+import { ApiTags } from '@nestjs/swagger';
+
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
 
-    constructor(private authService: AuthService){
+    constructor(private authService: AuthService) {}
 
-    }
     @Post('/register')
-    registerUser(@Body()userObject: RegisterAuthDto){
-        console.log(userObject);
-        return userObject;
-        //userObject.name;
-        //userObject.email;
-        //userObject.password;
+    registerUser(@Body() userObj: RegisterAuthDto) {
+        return this.authService.funRegister(userObj);
     }
 
     @Post('/login')
-    login(@Body()credenciales: LoginAuthDto){
-        //this.authService.login(credenciales)
+    login(@Body() credenciales: LoginAuthDto) {
         return this.authService.login(credenciales);
     }
 }

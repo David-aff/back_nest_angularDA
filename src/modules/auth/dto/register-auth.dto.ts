@@ -1,15 +1,10 @@
-import { IsEmail, IsNotEmpty, MaxLength, MinLength } from "class-validator";
-import { User } from "../interfaces/user.interface";
 
-export class LoginAuthDto implements User {
+import { PartialType } from "@nestjs/mapped-types";
+import { IsNotEmpty } from "class-validator";
+import { LoginAuthDto } from "./login-auth.dto";
+
+export class RegisterAuthDto extends PartialType(LoginAuthDto) {
 
     @IsNotEmpty()
-    @IsEmail()
-    email!: string;
-    @MinLength(6)
-    @MaxLength(25)
-    @IsNotEmpty()
-    password!: string;
-
-
+    name!: string;
 }

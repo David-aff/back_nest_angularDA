@@ -22,10 +22,7 @@ import { ConfigModule } from 'src/config/config.module';
             })
         })
     ],
-    //concatenar vectores
-    providers: [... databaseProvider, ConfigService],
-    exports: [... databaseProvider]
+    providers: [...databaseProvider, ConfigService],
+    exports: [...databaseProvider, TypeOrmModule]
 })
-export class DatabaseModule {
-
-}
+export class DatabaseModule {}
